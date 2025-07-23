@@ -17,6 +17,16 @@ public class TopKontrol : MonoBehaviour
         float dikey = Input.GetAxis("Vertical");
 
         Vector3 kuvvet = new Vector3(-dikey, 0, yatay);
-        rg.AddForce(kuvvet * 10f);
+        rg.AddForce(kuvvet * 5f);
+    }
+
+     void OnCollisionEnter (Collision cls)
+    {
+        string objIsmi = cls.gameObject.name;
+        if (objIsmi.Equals("bitis"))
+        {
+            print("Game over ");
+        }
+        
     }
 }
