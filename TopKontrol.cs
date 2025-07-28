@@ -6,7 +6,7 @@ using UnityEngine.UI; // It is best practice to add this line when using UI elem
 public class TopKontrol : MonoBehaviour
 {
     public Text zaman, can, durum;
-
+    public UnityEngine.UI.Button btn;
     private Rigidbody rg;
     float zamanSayici = 65;
      int canSayici = 40;
@@ -15,6 +15,7 @@ public class TopKontrol : MonoBehaviour
 
     void Start()
     {
+        can.text = canSayici + "";
         rg = GetComponent<Rigidbody>();
     }
 
@@ -31,6 +32,8 @@ public class TopKontrol : MonoBehaviour
         else if (!oyunTamam)
         {
             durum.text = "Game over ";
+            btn.gameObject.SetActive(true);
+
         }
 
         // This check stops the game if the time runs out.
@@ -54,7 +57,7 @@ public class TopKontrol : MonoBehaviour
         else
         {
          
-            rg.velocity = Vector3.zero;
+            rg.linearVelocity = Vector3.zero;
             rg.angularVelocity = Vector3.zero;
         }
     }
@@ -70,6 +73,7 @@ public class TopKontrol : MonoBehaviour
             {
                 oyunTamam = true; // This stops player movement and the timer text.
                 durum.text = "Game finished Good Job !";
+                btn.gameObject.SetActive(true);
             }
             else if (!objIsmi.Equals("LabirentZemini") && !objIsmi.Equals("Zemin"))
             {
